@@ -68,13 +68,13 @@ public class PiCalculator {
             System.out.println(e.getMessage());;
         }
 
-        pi = pi.setScale(floatingPoint, RoundingMode.HALF_DOWN);
+        pi = pi.setScale(floatingPoint, RoundingMode.DOWN);
         return pi.toPlainString();
     }
 
     public static void main(String[] args) {
         // Use the main function to test the code yourself
         PiCalculator pi = new PiCalculator();
-        System.out.println(pi.calculate(100));
+        System.out.println(pi.calculate(1000));
     }
 }
