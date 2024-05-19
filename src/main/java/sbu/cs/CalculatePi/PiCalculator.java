@@ -31,20 +31,22 @@ public class PiCalculator {
         }
         @Override
         public void run() {
-            BigDecimal a = new BigDecimal(1).divide(new BigDecimal(16).pow(k),mc);
-            BigDecimal b = new BigDecimal(4).divide(new BigDecimal(8*k+1),mc);
-            BigDecimal c = new BigDecimal(-2).divide(new BigDecimal(8*k+4),mc);
-            BigDecimal d = new BigDecimal(-1).divide(new BigDecimal(8*k+5),mc);
-            BigDecimal e = new BigDecimal(-1).divide(new BigDecimal(8*k+6),mc);
+            // i want to calculate this : [1/16^k][4/(8k+1) -2/(8k+4) -1/(8k+5) -1/(8k+6)]
 
-            num = a.multiply((b.add(c).add(d).add(e)),mc);
+            BigDecimal fraction1 = new BigDecimal(1).divide(new BigDecimal(16).pow(k),mc);
+            BigDecimal fraction2 = new BigDecimal(4).divide(new BigDecimal(8*k+1),mc);
+            BigDecimal fraction3 = new BigDecimal(-2).divide(new BigDecimal(8*k+4),mc);
+            BigDecimal fraction4 = new BigDecimal(-1).divide(new BigDecimal(8*k+5),mc);
+            BigDecimal fraction5 = new BigDecimal(-1).divide(new BigDecimal(8*k+6),mc);
+
+            num = fraction1.multiply((fraction2.add(fraction3).add(fraction4).add(fraction5)),mc);
 
             addPI(num);
         }
     }
     public static BigDecimal pi;
 
-    public static synchronized void addPI(BigDecimal num) {
+    public static synchronized void addPI(BigDecimal num) {  //whenever calculate one sentence according to k, add it with pi
         pi = pi.add(num);
     }
 
@@ -73,6 +75,6 @@ public class PiCalculator {
     public static void main(String[] args) {
         // Use the main function to test the code yourself
         PiCalculator pi = new PiCalculator();
-        System.out.println(pi.calculate(1000));
+        System.out.println(pi.calculate(100));
     }
 }

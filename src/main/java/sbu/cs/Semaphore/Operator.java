@@ -1,5 +1,8 @@
 package sbu.cs.Semaphore;
 
+import java.time.Instant;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.concurrent.Semaphore;
 
 public class Operator extends Thread {
@@ -17,7 +20,9 @@ public class Operator extends Thread {
         {
             try {
                 semaphore.acquire();
-                System.out.println(getName());
+                Calendar calendar = Calendar.getInstance(); //for calculate the time
+                System.out.println("\"" + getName() + "\"" + " accesses the resource at " + calendar.get(Calendar.HOUR)
+                        + ":" + calendar.get(Calendar.MINUTE) + ":" + calendar.get(Calendar.SECOND));
                 Resource.accessResource();          // critical section - a Maximum of 2 operators can access the resource concurrently
             } catch (InterruptedException e) {
                 System.out.println(e.getMessage());
