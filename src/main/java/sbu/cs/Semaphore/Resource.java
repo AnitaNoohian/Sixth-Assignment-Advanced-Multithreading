@@ -1,6 +1,7 @@
 package sbu.cs.Semaphore;
 
-public class Resource {
+public class
+Resource {
 
     public static void accessResource() {
         try {
