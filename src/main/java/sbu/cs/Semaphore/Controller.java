@@ -35,7 +35,6 @@ public class Controller {
         operator4.start();
         operator5.start();
 
-
         /*
         TODO
             Use a Semaphore to solve the synchronization problem.
